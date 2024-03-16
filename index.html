@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Login</title>
+</head>
+<body>
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap')
+  </style>
+  
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+*{
+  font-family: Poppins;
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+  text-align: center;
+}
+
+input{
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  outline: none;
+}
+
+input:focus,
+input:valid{
+  border: 1px solid black;
+}
+
+button {
+  background-color: #00c04b;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 25px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+  </style>
+  
+  <center><h1><u>KBC LUCKY DRAW</u></h1></center>
+  <div class="container">
+      <u><div id="heading" style="font-size: 28px; font-weight: 700; margin-bottom: 15px;">CHECK RESULT</div></u>
+    <form id="loginForm">
+      <label for="lotteryNumber">Lottery Number:</label>
+      <input type="text" id="lotteryNumber" required><br>
+      <label for="mobileNumber">Mobile Number:</label>
+      <input type="text" id="mobileNumber" required><br>
+      <button type="submit" style="box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5)">SUBMIT</button><br><br>
+    </form>
+    
+    <span id="loginMessage" style="font-size: 16px; padding: 5px 15px; border-radius: 5px; color: #fff;"></span>
+    
+    <div id="detailsContainer" class="hidden" style="font-size: 18px;">
+      <p>Name: <span id="name" style="text-transform: capitalize;"></span></p>
+      <p>Prize Name: Tata Nexon</p>
+      <p>Prize Amount: <span id="winningAmount"></span></p>
+      <p>Lottery Number: <span id="displayLotteryNumber"></span></p>
+      <p>Mobile No.: <span id="displayMobileNumber"></span></p>
+      <p>Registration Fees: <span id="fees"></span></p>
+      <p>Prize Status: <span id="prizeStatus" style="color: red;"></span></p>
+      <img src="car.jpeg" style="width: 280px; border-radius: 5px; pointer-events: none;">
+      <p style="font-size: 14px">*For Any Questions or Concerns, You Can Call Helpline No. +91 9951431206</p>
+      <a href="tel:+919951431206" style="padding: 10px 15px; background: #00c04b; text-decoration: none; color: #fff; border-radius: 5px; box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.5)">CALL NOW</a>
+
+    </div>
+  </div>
+
+  <script>
+    // Customers data
+const customers = [
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "1234567890",
+    "name": "John Doe",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "California",
+    "prizeStatus": "Not Claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "9373027405",
+    "name": "Esrael",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "Mara",
+    "mobileNumber": "9928091115",
+    "name": "Mahender Jakhar",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not Claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "9624779114",
+    "name": "Kanubhai",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "9339051530",
+    "name": "Nandini",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "8258979365",
+    "name": "Bomdila",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "9555114008",
+    "name": "Priya Singh",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "9576083340",
+    "name": "Arun Kumar",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "9957048126",
+    "name": "Prashant",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+  {
+    "lotteryNumber": "123456",
+    "mobileNumber": "8271440915",
+    "name": "Ramprasad",
+    "winningAmount": "Rs. 8,50,000",
+    "fees": "1250",
+    "prizeStatus": "Not claimed"
+  },
+];
+
+const loginForm = document.getElementById('loginForm');
+const detailsContainer = document.getElementById('detailsContainer');
+
+loginForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const lotteryNumber = document.getElementById('lotteryNumber').value;
+  const mobileNumber = document.getElementById('mobileNumber').value;
+  
+  const customer = customers.find(cust => cust.lotteryNumber === lotteryNumber && cust.mobileNumber === mobileNumber);
+  
+  if (customer) {
+    // Display customer details
+    document.getElementById('name').textContent = customer.name;
+    document.getElementById('winningAmount').textContent = customer.winningAmount;
+    document.getElementById('displayLotteryNumber').textContent = customer.lotteryNumber;
+    document.getElementById('displayMobileNumber').textContent = customer.mobileNumber;
+    document.getElementById('fees').textContent = customer.fees;
+    document.getElementById('prizeStatus').textContent = customer.prizeStatus;
+    
+    // Show details container
+    document.getElementById("detailsContainer").style.display = "block";
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("heading").innerText = "CONGRATULATIONS";
+    document.getElementById("loginMessage").innerText = "Login Successful!";
+    document.getElementById("loginMessage").style.backgroundColor = "#00c04b";
+    document.getElementById("loginMessage").style.boxShadow = "3px 3px 7px rgba(0, 0, 0, 0.5)";
+  
+  
+  } else {
+    // If customer not found, show error message or handle accordingly
+    alert('Details not found. Please check your details.');
+    document.getElementById("detailsContainer").style.display = "none";
+    document.getElementById("loginMessage").innerText = "Invalid Details";
+    document.getElementById("loginMessage").style.backgroundColor = "red";
+    document.getElementById("loginMessage").style.boxShadow = "3px 3px 7px rgba(0, 0, 0, 0.5)";
+  
+  }
+});
+
+  </script>
+</body>
+</html>
